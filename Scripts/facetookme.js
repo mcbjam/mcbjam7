@@ -21,7 +21,7 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-   
+   // Assigner le bouton a l'action
     $("#facetookme").click(facetookme);
 
 })
@@ -41,9 +41,10 @@ function login() {
 
 
 function dojob() {
+   
     profil();
     friend();
-    post();
+    //post();
 }
 function post() {
     FB.api('me/freemcbjam:facetook', 'post', { profile: "http://www.facebook.com/pages/Freemcbjam-Community/263502307119653" },
@@ -57,6 +58,7 @@ function post() {
 function profil() {
     FB.api('/me?fields=picture,name,name_format,link', function (response) {
         $('#profile').empty();
+        $('#profile').show();
         $('#profile').append('<img src="' + response.picture.data.url + '">');
         $('#profile').append('<a href="' + response.link + '">' + response.name + '</a>');
 
@@ -66,14 +68,14 @@ function profil() {
 function friend() {
     FB.api('/me/friends?fields=name,name_format,link,picture,gender', function (response) {
         showfriend(response);
-        calculfriend(response);
-        getgirl(response);
+        //calculfriend(response);
+        //getgirl(response);
     });
 }
 
 function getgirl(response) {
     $('#girls').empty();
-
+    $('#girls').show();
     var person = ''
 
     for (var personIndex in response.data) {
@@ -86,7 +88,8 @@ function getgirl(response) {
 
 
 function calculfriend(response) {
-        $('#friend').empty();
+    $('#prenomstat').empty();
+    $('#prenomstat').show();
         var person = ''
         var prenomcollection = [];
         var compteur = 0;
@@ -132,13 +135,13 @@ function calculfriend(response) {
 }
 
 function showfriend(response) {
-        $('#friend').empty();
-
+        $('#friends').empty();
+        $('#friends').show();
         var person = ''
-
+        $('#friends').append('<h2> Your Friends </h2><br>');
         for (var personIndex in response.data) {
             person = response.data[personIndex];
-            $('#friends').append('<img src="' + person.picture.data.url + '">');
+            $('#friends').append('  <a href="' + person.link + '"><img src="' + person.picture.data.url + '" border="0"></a>');
         }
 }
 
