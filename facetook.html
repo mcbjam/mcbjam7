@@ -7,10 +7,10 @@
         <link href="Content/vendor/jquery.smallipop.css" rel="stylesheet" />
         <link href="Content/vendor/animate.min.css" rel="stylesheet" />
         <link href="Content/mcbjam.css" rel="stylesheet" />
-             
+              
 </head>
   <body>
-
+      <div id="fb-root"></div>
        <div class="container-narrow">
 
       <div class="masthead">
@@ -22,17 +22,26 @@
         <h3 class="muted">McbJam</h3>
       </div>
 <!-- ------------------------------------------------------------------------ --->              
- 
- <div class="jumbotron">
-               <input type="button" id="post" class="btn btn-large btn-success" value="Post"/>
+  
+      <div class="jumbotron">
+         <h1>FaceTbook<br /> Your Friends </h1>
+         <!--   <p class="lead">Analyse tes Amis, regarde combien tu as filles ou de garcon dan tes amis, regarde quel est le nom ...</p>-->
+         <span id="tipCSSAnimated"  data-smallipop='{"theme":"black","preferredPosition":"bottom"}' title="See your friend">
+               <input type="button" id="facetookme" class="btn btn-large btn-success" value="FaceTbook"/>
+          </span>
      </div>
-         
 
 
-
-
+      <!-- ----------conetent-->
+     <div class="jumbotron"  id="results"  >  
+          <div id="profile" hidden="hidden"></div>
+          <div id="girls" hidden="hidden"></div>      
+        <div id="friends" hidden="hidden"></div>
+         <div id="prenomstat" hidden="hidden"></div>
+        </div>
+   <hr/> 
                 
-<!-- ------------------------------------------------------------------------- --->         
+     <!-- ------------------------------------------------------------------------- --->         
      <div class="jumbotron">    
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolbox addthis_default_style,jumbotron">
@@ -43,6 +52,7 @@
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
         <!-- AddThis Button END -->
      
+   
        <!-- Commentaire facebook -->
        <div class="fb-comments" data-href="http://mafreemcbjam.zapto.org/" data-width="470" data-num-posts="10"></div>
     </div>
@@ -50,24 +60,24 @@
     <hr/>
 
     <div class="footer">
-      <p>&copy; McbJam 2013</p>
-      <a class="gototop" href="#" title="That was easy!">Go to Top</a>       
+      <p>&copy; McbJam 2013</p>     
+        <a class="gototop" href="http://mcbjam.blogspot.fr/" title="That was easy!">Mon Blog</a> 
+         <a class="gototop" href="#" title="That was easy!">Go to Top</a> <br />       
     </div>
 
     </div> <!-- /container------------------------------------------------------------------ -->
        
+      <!-- fork me on github-->
+      <a href="https://github.com/you"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
 
 
       <!-- JS   -->
-      <script src="Scripts/vendor/jquery-1.9.1.min.js"></script>
-      <script src="Scripts/vendor/modernizr.custom.62934.js"></script>
-      <script src="Scripts/vendor/jquery.smallipop.js"></script>
-      <script src="Scripts/vendor/usergrid.js"></script>   
-     <!-- Mine  -->       
-     <script src="Scripts/main.js"></script>
-     <!--   <script src="Scripts/facetook.js"></script> -->
-     <script src="Scripts/usergrid.js"></script>
+       <script src="Scripts/vendor/jquery-1.9.1.min.js"></script>
+        <script src="Scripts/vendor/modernizr.custom.62934.js"></script>
+        <script src="Scripts/vendor/jquery.smallipop.js"></script>
        
+      <script src="Scripts/main.js"></script>
+      <script src="Scripts/facetook.js"></script>
 
       <!-- /Google analytics -->
       <script>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title>Dogs Example App for Apigee App Services (Usergrid)</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+       <link href="Content/vendor/bootstrap.min.css" rel="stylesheet" />
+       <script src="Scripts/main.js"></script>
+
+       <script src="Scripts/vendor/jquery-1.9.1.min.js"></script>
+       <script src="Scripts/vendor/usergrid.js"></script>
+       <script src="Scripts/vendor/usergrid.validation.js"></script>
+       <script src="Scripts/dog.js"></script>
+
+   </head>
+   <body>
+
+         <div id="error">         
+         </div>
+          <div id="message">
+         </div>
+       <br />
+       <br />
+       <br />
+        <input type="text" name="name" id="name" class="span4" />
+       <button class="btn btn-primary" id="create-dog" style="width: 90px;">Create dog</button>
+       
+       
+       
+       
+       
+       <br />
+       <br />
+       <br />
+      <div id="dogs-list">
+         <div>
+            <ul id="mydoglist"><li></li></ul>
+         </div>
+         <button id="previous-button" style="float:left; display: none; width: 90px;" class="btn btn-primary" >Previous</button>
+         <button id="next-button" style="float:right; display: none; width: 90px;" class="btn btn-primary" >Next</button>
+      </div>
+
+
+
+    </body>
+</html>
