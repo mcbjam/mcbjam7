@@ -1,0 +1,181 @@
+extends ../includes/layout
+
+append head
+  title Carousel - jQuery Rondell
+
+append content
+  include ../includes/submenu
+  mixin submenu('Carousel')
+
+  br
+
+  #rondellCarousel.hidden
+    a(target="_blank", rel="rondell_1", href="images/galery/band.jpg", title="My favourite band")
+      img(src="images/galery/band_small.jpg", alt="Band", title="My favourite band")
+      h5 Awesome concert
+      p My favourite band.
+
+    a(target="_blank", rel="rondell_1", href="images/galery/dog.jpg", title="My dog")
+      img(src="images/galery/dog_small.jpg", alt="Dog", title="My dog")
+      h5 My dog
+      p Standing in front of a glass door and wants in.
+
+    a(target="_blank", rel="rondell_1", href="images/galery/cat.jpg", title="My cat")
+      img(src="images/galery/cat_small.jpg", alt="Cat", title="My cat")
+      h5 My cat
+      p Sleeping...
+
+    a(target="_blank", rel="rondell_1", href="images/galery/boar.jpg", title="Boar")
+      img(src="images/galery/boar_small.jpg", alt="Boar", title="Boar")
+      h5 Dead boar on the wall
+      p Hanging around.
+
+    a(target="_blank", rel="rondell_1", href="images/galery/snow.jpg", title="Snow")
+      img(src="images/galery/snow_small.jpg", alt="Snow", title="Snow")
+      h5 Winter wonderland
+      p The german alps.
+
+    a(target="_blank", rel="rondell_1", href="images/galery/rabbit.jpg", title="Rabbit")
+      img(src="images/galery/rabbit_small.jpg", alt="Rabbit", title="Rabbit")
+      h5 Bunny
+      p In my brothers garden.
+
+    a(target="_blank", rel="rondell_1", href="images/galery/trash.jpg", title="")
+      img(src="images/galery/trash_small.jpg", alt="Trash", title="Trash")
+      h5 Trash
+      p Somewhere in the USA.
+
+  br
+
+  a.resize-button(href="#") Resize
+
+  br
+
+  .center
+    h2 Preset - Carousel
+
+  hr
+  br
+
+  .size2of3.centered
+    :markdown
+      This demo shows how to display a carousel enhanced with a lightbox.
+      Click an image to focus it and a second click will open the original image in the lightbox.
+
+      You can press arrow left and right on your keyboard to navigate through the images
+      or swipe when using a touch device.
+      The rondell will automatically continue to rotate through the carousel when
+      your mouse leaves it's area.
+
+      Here's how it's done
+
+    pre.
+      <div id="rondellCarousel">
+        <a target="_blank" rel="rondell" href="images/galery/band.jpg" title="...">
+          <img src="images/galery/band.jpg" alt="Band" title="My favourite band">
+          <h5>Awesome concert</h5>
+          <p>My favourite band.</p>
+        </a>
+
+        ...
+
+      </div>
+
+      <script type="text/javascript">
+        $(function() {
+          // Create a rondell with the 'carousel' preset and set an option
+          // to disable the rondell while the lightbox is displayed
+          $("#rondellCarousel > *").rondell({
+            preset: "carousel",
+          });
+        });
+      </script>
+
+  br
+  hr
+  br
+
+  #rondellCubic.hidden
+
+  .center
+    h2 Preset - Cubic
+
+  hr
+  br
+
+  .size2of3.centered
+    :markdown
+      This demo fetches links & images from my brothers great webservice
+      [wookmark.com](http://www.wookmark.com "Wookmark.com")
+      and creates a rondell from the data.
+
+      This example shows a carousel with a cubic function for the animation.
+      The images titles are used as caption and clicking the focused
+      element will open the wookmark in a new tab or window.
+
+      Here's how it's done
+
+    pre.
+      <div id="rondellCubic">&nbsp;</div>
+
+      <script type="text/javascript">
+        $(function() {
+          $.ajax({
+            url: "http://www.wookmark.com/api/json",
+            dataType: "jsonp",
+            success: function(data, text, xhqr) {
+              var item, rondellContent = "", i;
+              if (text === "success") {
+                for (i = 0; i < 24; i++) {
+                  item = data[i];
+                  rondellContent += ' \\
+                    <a href="'+item.image+'" title="'+item.title+' @ '+item.url+'" \\
+                      target="_blank" style="display:none"> \\
+                      <img src="'+item.preview+'" title="'+item.title+'" width="'+item.width+'" height="'+item.height+'"/> \\
+                    </a> \\
+                  ';
+                }
+                $("#rondellCubic").html(rondellContent).children().rondell({
+                  preset: "cubic"
+                });
+              }
+            }
+          });
+        });
+      </script>
+
+  br.clear
+
+append js
+  :coffeescript
+    $ ->
+
+      # Initializer for the carousel
+      carousel = $("#rondellCarousel > *").rondell
+        preset: "carousel"
+
+      # Button for resizing the demo carousel
+      $(".resize-button").click (e) ->
+        e.preventDefault()
+        carousel.fitToContainer()
+
+      # Create sample wookmark carousel by calling it's api
+      $.ajax
+        url: "http://www.wookmark.com/api/json"
+        dataType: "jsonp"
+        success: (data, text, xhqr) ->
+          if text is "success"
+            rondellContent = ""
+
+            # Create link and image from each item data
+            for item in data[0..24]
+              rondellContent += "
+                <a href=\"#{item.image}\" title=\"#{item.title} @ #{item.url}\" target=\"_blank\" style=\"display:none\">
+                  <img src=\"#{item.preview}\" title=\"#{item.title}\" width=\"#{item.width}\" height=\"#{item.height}\"/>
+                </a>
+              ";
+
+            # Append items to rondell and init rondell
+            $("#rondellCubic").html(rondellContent).children().rondell
+              preset: "cubic"
+

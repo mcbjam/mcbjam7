@@ -1,0 +1,104 @@
+extends ../includes/layout
+
+append head
+  title Gallery - jQuery Rondell
+
+append content
+  include ../includes/submenu
+  mixin submenu('Gallery')
+
+  br
+
+  #rondellGallery(style="height:400px;") &nbsp;
+
+  br
+  br
+
+  .center
+    h2 Preset - Gallery
+
+  hr
+  br
+
+  .size2of3.centered
+    :markdown
+      This demo fetches links &amp; images from my brothers great webservice
+      [wookmark.com](http://www.wookmark.com "Wookmark.com")
+      and creates a rondell from the data.
+
+      The image titles are used as caption and clicking the
+      focused element will open the wookmark in a new tab or window.
+
+      Here's how it's done
+
+    pre.
+      <div id="rondellGallery" style="height:400px;">&nbsp;</div>
+
+      <script type="text/javascript">
+        $(function() {
+          $.ajax({
+            url: "http://www.wookmark.com/api/json",
+            dataType: "jsonp",
+            success: function(data, text, xhqr) {
+              var item, rondellContent = "", i;
+              if (text === "success") {
+                for (i = 0; i < 24; i++) {
+                  item = data[i];
+                  rondellContent += ' \\
+                    <a href="'+item.image+'" title="'+item.title+' @ '+item.url+'" \\
+                      target="_blank" style="display:none"> \\
+                      <img src="'+item.preview+'" title="'+item.title+'" width="'+item.width+'" height="'+item.height+'"/> \\
+                    </a> \\
+                  ';
+                }
+                $("#rondellGallery").html(rondellContent).children().rondell({
+                  preset: "gallery"
+                });
+              }
+            }
+          });
+        });
+      </script>
+
+  br.clear
+
+append js
+  :coffeescript
+    $ ->
+      # Api call to wookmark for the sample gallery.
+      # Use the init call in the success callback when you just want to display
+      # gallery without the wookmark call.
+      $.ajax
+        url: "http://www.wookmark.com/api/json"
+        dataType: "jsonp"
+        success: (data, text, xhqr) ->
+          if text is "success"
+            rondellContent = ""
+
+            # Create link and image from each item data
+            for item in data[0..24]
+              rondellContent += "
+                <a href=\"#{item.image}\" title=\"#{item.title} @ #{item.url}\" target=\"_blank\" style=\"display:none\">
+                  <img src=\"#{item.preview}\" title=\"#{item.title}\" width=\"#{item.width}\" height=\"#{item.height}\"/>
+                </a>
+              ";
+
+            # Append items to rondell and init rondell
+            $("#rondellGallery").html(rondellContent).children().rondell
+              preset: "gallery"
+              theme: "light"
+              center:
+                top: 190
+                left: 210
+              controls:
+                margin:
+                  x: 190
+                  y: 370
+              itemProperties:
+                sizeFocused:
+                  width: 380
+                  height: 340
+              funcTop: (l, r, i) ->
+                r.center.top + (l - 0.5) * (r.itemProperties.size.height + r.special.itemPadding)
+              funcLeft: (l, r, i) ->
+                r.size.width - r.itemProperties.size.width - r.special.itemPadding

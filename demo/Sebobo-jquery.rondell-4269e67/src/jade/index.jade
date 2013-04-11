@@ -1,0 +1,173 @@
+extends includes/layout
+
+prepend head
+  path = ''
+  title Overview - jQuery Rondell
+
+append content
+  include includes/submenu
+  mixin submenu('Overview', true)
+
+  #introduction.column.size1of2
+    h3.hidden About
+    :markdown
+      This is a [jQuery](http://www.jquery.com "jQuery") plugin for displaying galeries
+      and other content the way *you* want.
+
+      Checkout the different presets in the upper menu!
+      Especially the [Gallery](examples/gallery.html "Rondell Gallery preset") and [Thumbnails](examples/thumbnails.html "Rondell Thumbnails preset") preset.
+
+      The rondell demos can be controlled with your keyboard,
+      by clicking the controls or by clicking the rondell items.
+
+      Touching items and swiping on a phone or tablet computer will work too!
+
+      The plugin has been tested with and should work fine with:
+      IE 7-9, Firefox 3.6+, Chrome, Safari 4+, Opera 11+
+
+      Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php "MIT licence").
+
+    p
+      a.btn.success(href="https://github.com/Sebobo/jquery.rondell/zipball/master", title="Rondell zip download").
+        Download rondell now
+      | &nbsp;
+      a.btn(href="https://github.com/Sebobo/jquery.rondell", title="Rondell source at github").
+        Visit rondell at github
+
+  .column.size1of2
+    img.hideOnJS(src="examples/images/preview.png", alt="Rondell preview")
+
+    #rondellTopDemo.showOnJS.hidden
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/band.jpg", title="My favourite band")
+        img(src="examples/images/galery/band_small.jpg", alt="Band", title="My favourite band")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/dog.jpg", title="My dog")
+        img(src="examples/images/galery/dog_small.jpg", alt="Dog", title="My dog")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/cat.jpg", title="My cat")
+        img(src="examples/images/galery/cat_small.jpg", alt="Cat", title="My cat")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/boar.jpg", title="Boar")
+        img(src="examples/images/galery/boar_small.jpg", alt="Boar", title="Boar")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/snow.jpg", title="Snow")
+        img(src="examples/images/galery/snow_small.jpg", alt="Snow", title="Snow")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/rabbit.jpg", title="Rabbit")
+        img(src="examples/images/galery/rabbit_small.jpg", alt="Rabbit", title="Rabbit")
+
+      a(target="_blank", rel="rondell_1", href="examples/images/galery/trash.jpg", title="Trash")
+        img(src="examples/images/galery/trash_small.jpg", alt="Trash", title="Trash")
+
+  br.clear
+  br
+  .column
+    // Flattr button BEGIN
+    a.FlattrButton.hidden(rev="flattr;button:compact;", href="http://sebobo.github.com/jquery.rondell")
+    noscript
+      a(href="http://flattr.com/thing/460088/jQuery-Rondell-by-Sebastian-Helzle", target="_blank")
+        img(src="http://api.flattr.com/button/flattr-badge-large.png", alt="Flattr this", title="Flattr this", border="0")
+    // Flattr button END
+  .column.last
+    // AddThis Button BEGIN
+    .addthis_toolbox.addthis_default_style
+      a.addthis_button_preferred_1
+      a.addthis_button_preferred_2
+      a.addthis_button_preferred_3
+      a.addthis_button_preferred_4
+      a.addthis_button_compact
+      a.addthis_counter.addthis_bubble_style
+    // AddThis Button END
+
+  br
+  br#usage
+
+  .size1of2
+    h4 Usage
+    pre.
+      &lt;script type="text/javascript"&gt;
+
+        $('.myContainer > .myItem').rondell([options][, callback]);
+
+      &lt;/script&gt;
+
+  br
+
+  .column.size1of2
+    h5 Changelog
+    a.showCode(href="/examples/changelog.html", title="See changes in the last versions").
+      Click here to see changes in the last versions
+    br
+    br
+    h5 Roadmap
+    ul
+      li More themes
+      li CSS based controls
+      li CSS animations
+      li Full QUnit testsuite
+    br
+
+  .column.size1of2.last
+    h5 Dependencies
+    ul
+      li
+          a(href="http://www.jQuery.com", title="jQuery") jQuery
+          | &nbsp;version 1.5.2 or better
+      li
+          a(href="http://www.modernizr.com/", title="Modernizr library") Modernizr
+          | &nbsp;for browser capability fallbacks.
+          br
+          | The library is included in the plugins
+          i &nbsp;lib
+          | &nbsp;folder.
+
+  br.clear
+  hr
+  br
+
+  h4 Feedback is welcome!
+  p
+    | Please send me suggestions, ideas for improvement or anything else to&nbsp;
+    a(href="mailto:sebastian@helzle.net", title="Send me a mail") sebastian@helzle.net
+    | &nbsp;or&nbsp;
+    a(href="http://twitter.com/#!/sebobo", target="_blank", title="Sebobo at twitter") @sebobo
+
+  br.clear
+  br
+
+  h4 Have fun and check out my other plugins
+  p
+    a.btn.primary(href="http://projects.sebastianhelzle.net/jquery.smallipop", title="smallipop - a better tooltip plugin").
+      jQuery smallipop
+
+  br
+
+  p
+    | jQuery Rondell is powered by&nbsp;
+    a(href="http://jashkenas.github.com/coffee-script/", target="_blank", title="Coffeescript").
+      coffeescript
+    | ,&nbsp;
+    a(href="http://sass-lang.com/", target="_blank", title="Sass") sass
+    | &nbsp;and&nbsp;
+    a(href="http://www.jquery.com", target="_blank", title="jQuery") jQuery
+    | .
+
+  br
+
+prepend js
+  path = ''
+
+append js
+  :coffeescript
+    # Sample rondell carousel
+    $("#rondellTopDemo > *").rondell
+      preset: "carousel"
+      radius:
+        x: 130
+      center:
+        left: 200
+        top: 110
+      itemProperties:
+        size:
+          width: 100
+          height: 100

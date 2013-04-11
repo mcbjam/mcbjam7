@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="en">
+    <meta name="keywords" content="jquery,tooltip,popup,plugin,css3,open-source,mit-license,extension,overlay">
+    <meta name="description" content="Sebastian Helzle's jQuery Rondell plugin">
+    <link rel="stylesheet" href="../examples/screen.css" type="text/css" media="all" title="Screen">
+    <link rel="stylesheet" href="../dist/jquery.rondell.css" type="text/css" media="all" title="Screen">
+    <script src="../libs/modernizr-2.0.6.min.js"></script>
+    <title>Installation - jQuery Rondell</title>
+  </head>
+  <body>
+    <div class="pageHeader hasShadow">
+      <h1 id="docustart">Rondell - Display images and other content in a nice way</h1>
+      <p><b>Version 1.0.2</b>&nbsp;- Created by<a href="http://www.sebastianhelzle.net" target="_blank" title="Sebastian Helzle IT-Consulting">
+          Sebastian Helzle
+          </a></p><br>
+      <ul class="tabs">
+        <li><a href="/" title="Projects overview">Home</a></li>
+        <li><a href="/jquery.smallipop" title="jQuery smallipop - A tooltip plugin">Smallipop</a></li>
+        <li class="selected"><a href="/jquery.rondell" title="jQuery rondell - A graphical plugin">Rondell</a></li>
+        <li><a href="https://github.com/SmallImprovements/jquery.smallimap" target="_blank" title="jQuery smallimap - An interactive map plugin">Smallimap</a></li>
+      </ul>
+    </div>
+    <div id="introduction" class="page hasShadow">
+            <div class="subnav centered">
+              <ul class="nav nav-pills">
+                <li><a href="../index.html">Overview</a></li>
+                <li class="active"><a href="installation.html">Installation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="options.html">Options</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="carousel.html">Carousel</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="scroller.html">Scroller</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="thumbnails.html">Thumbnails</a></li>
+                <li><a href="pages.html">Pages</a></li>
+              </ul><br class="clear">
+            </div><br>
+      <div class="center">
+        <h2>Installation</h2>
+      </div>
+      <hr><br>
+      <div>
+        <h6>Prequisites</h6>
+        <ul>
+          <li><b><a href="http://www.jquery.com" target="_blank" title="jQuery library">jQuery</a></b>&nbsp;<span class="label important">Important</span><br>1.5.2 or better<br>Provided with the download.</li>
+          <li><b><a href="http://www.modernizr.com" target="_blank" title="Modernizr library">Modernizr</a></b>&nbsp;<span class="label warning">Optional but recommended</span><br>This library tests the browser for feature support and provides this information to the plugin and stylesheets.<br>We use this for css fallbacks in our themes and touch detection.<br>Provided with the download.</li>
+          <li>
+            <The></The><b>jQuery mousewheel plugin</b>&nbsp;<span class="label notice">Optional</span><br>If you want to use the mouse horizontal scroll events to control the rondell.<br>Provided with the download.
+          </li>
+        </ul><p>The plugins are provided in the <em>libs</em> folder.</p>
+
+<p>If you don&#39;t want to use the <em>Modernizr</em> library you should remove the
+<em>.cssgradients</em>, <em>.borderradius</em>, <em>.rgba</em> and <em>.boxshadow</em> classes
+in <em>css/jquery.smallipop.css</em> to have css3 effects.</p><br>
+        <h6>Required files</h6><ul><li>Copy <em>dist/jquery.rondell.js</em> to your javascript folder.</li><li>Copy <em>dist/jquery.rondell.css</em> to your css folder.</li><li>Copy <em>libs/jquery-x.x.x.min.js</em> to your javascript folder if you don&#39;t use jQuery already.</li><li>Copy <em>libs/modernizr-x.x.x.js</em> to your javascript folder if you don&#39;t use modernizr already.</li></ul>
+
+<p>There are minified versions of the rondell files for production in the <em>lib</em> and <em>css</em> folders too.</p><br>
+        <h6>Modify your html header</h6>
+        <p>
+          Add these lines to the header (or footer in case of the javascripts)
+          of your html file and replace x.x.x with the correct versions and use the correct path where you put your files.
+          
+        </p>
+        <pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;jquery.rondell.css&quot; type=&quot;text/css&quot; media=&quot;all&quot; title=&quot;Screen&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-x.x.x.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;modernizr-x.x.x.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.rondell.js&quot;&gt;&lt;/script&gt;&lt;/pre&gt;</pre><br><h4>Get started!</h4>
+
+<p>Setup your images html and use the code of one of my examples to
+create your own rondell.</p>
+
+<p>Experiment with the various options and send me a message if you want
+to share your great work.</p>
+      </div><br class="clear">
+    </div><br>
+    <noscript><img src="http://tracking.sebastianhelzle.net/piwik.php?idsite=5" style="border:0" alt=""></noscript>
+    <script src="../libs/jquery-1.9.1.min.js"></script>
+    <script src="../libs/jquery.mousewheel-3.0.6.min.js"></script>
+    <script src="../dist/jquery.rondell.js"></script>
+    <script src="../examples/demohelpers.js"></script>
+  </body>
+</html>

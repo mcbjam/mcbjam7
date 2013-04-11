@@ -1,0 +1,98 @@
+extends ../includes/layout
+
+append head
+  title Installation - jQuery Rondell
+
+append content
+  include ../includes/submenu
+  mixin submenu('Installation')
+
+  br
+  .center
+    h2 Installation
+  hr
+  br
+
+  div
+    h6 Prequisites
+
+    ul
+      li
+        b
+          a(href="http://www.jquery.com", target="_blank", title="jQuery library") jQuery
+        | &nbsp;
+        span.label.important Important
+        br
+        | 1.5.2 or better
+        br
+        | Provided with the download.
+
+      li
+        b
+          a(href="http://www.modernizr.com", target="_blank", title="Modernizr library") Modernizr
+        | &nbsp;
+        span.label.warning Optional but recommended
+        br
+        | This library tests the browser for feature support and provides this information to the plugin and stylesheets.
+        br
+        | We use this for css fallbacks in our themes and touch detection.
+        br
+        | Provided with the download.
+
+      li
+        The
+        b jQuery mousewheel plugin
+        | &nbsp;
+        span.label.notice Optional
+        br
+        | If you want to use the mouse horizontal scroll events to control the rondell.
+        br
+        | Provided with the download.
+
+    :markdown
+      The plugins are provided in the *libs* folder.
+
+      If you don't want to use the *Modernizr* library you should remove the
+      *.cssgradients*, *.borderradius*, *.rgba* and *.boxshadow* classes
+      in *css/jquery.smallipop.css* to have css3 effects.
+
+    br
+
+    h6 Required files
+
+    :markdown
+      * Copy *dist/jquery.rondell.js* to your javascript folder.
+      * Copy *dist/jquery.rondell.css* to your css folder.
+      * Copy *libs/jquery-x.x.x.min.js* to your javascript folder if you don't use jQuery already.
+      * Copy *libs/modernizr-x.x.x.js* to your javascript folder if you don't use modernizr already.
+
+      There are minified versions of the rondell files for production in the *lib* and *css* folders too.
+
+    br
+
+    h6 Modify your html header
+
+    p.
+      Add these lines to the header (or footer in case of the javascripts)
+      of your html file and replace x.x.x with the correct versions and use the correct path where you put your files.
+
+    pre
+      &lt;link rel="stylesheet" href="jquery.rondell.css" type="text/css" media="all" title="Screen"/&gt;
+      &lt;script type="text/javascript" src="jquery-x.x.x.min.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="modernizr-x.x.x.min.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="jquery.rondell.js"&gt;&lt;/script&gt;</pre>
+
+    br
+
+    :markdown
+      #### Get started!
+
+      Setup your images html and use the code of one of my examples to
+      create your own rondell.
+
+      Experiment with the various options and send me a message if you want
+      to share your great work.
+
+  br.clear
+
+
