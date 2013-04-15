@@ -1,5 +1,32 @@
 ﻿$(document).ready(function () {
   
+    //-----  Load facebook for like buttoon and comment at least --->
+ 
+        var fbAppId = '445930615488341';
+        var accesstoken = '';
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: fbAppId,        // App ID
+                status: true,           // check login status
+                cookie: true,           // enable cookies to allow the server to access the session
+                xfbml: true            // parse page for xfbml or html5 social plugins like login button below
+            });
+        };
+
+        // Load the SDK Asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    //-----  End Load facebook ------------------------------->
+
+
    // Assigner le bouton a l'action
     $("#facetookme").click(facetookme);
 
@@ -10,7 +37,6 @@
             hide: 'animated hinge'
         }
     });
-
 })
 
 
@@ -18,11 +44,11 @@ function login() {
     FB.login(function (response) {
         if (response.authResponse) {
             accesstoken = FB.getAuthResponse()['accessToken'];
-            //dojob();
+            dojob();
         } else {
             alert(response);
         }
-    }, { scope: 'email, user_likes, user_birthday, friends_birthday' });
+    }, { scope: 'email, user_likes, user_birthday, post, friends_birthday' });
 }
 
 
@@ -30,8 +56,9 @@ function dojob() {
    
     profil();
     friend();
-    //post();
+    post();
 }
+
 function post() {
     FB.api('me/freemcbjam:facetook', 'post', { profile: "http://www.facebook.com/pages/Freemcbjam-Community/263502307119653" },
     function (response) {

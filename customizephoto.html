@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>McbJam Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="Content/vendor/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/vendor/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="Content/mcbjam2.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">McbJam</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+                <div class="navbar-form pull-right">
+                 <img id='profil' src='' />
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+
+                <div id="fb-root"></div>
+                <p id='msg'></p>
+
+               
+                <br />
+               
+                <fb:login-button scope="user_photos,friends_photos,user_photo_video_tags,friends_photo_video_tags,photo_upload" onlogin="dojob()" id="loginbutton">
+  Commencez à customisez vos photos
+</fb:login-button>
+
+                <div id='injection_site'></div>
+
+                <div class="row">
+                    <div class="span2">
+                        <ul id="albumlist"></ul>
+                    </div>
+                    <div class="span4">
+                        <div id="albums"></div>
+                    </div>
+                    <div class="span5">
+                        
+                        <!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
+                            <input type="button"  value='Customize photo' onclick="return launchEditor();" id="launcheditor" class="btn btn-large btn-success" style="display:none" />                      
+                        <input type="button" id="postonfacebook" class="btn btn-large btn-success" value="Upload On Facebook" style="display:none"/>
+                       <br />
+                         <img id='image1' src='' />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <footer>
+            <p>&copy; Company 2013</p>
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="Scripts/vendor/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/vendor/modernizr.custom.62934.js"></script>
+    <script src="Scripts/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+    <script src="Scripts/customizephoto.js"></script>
+
+
+     <script>
+         (function (i, s, o, g, r, a, m) {
+             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                 (i[r].q = i[r].q || []).push(arguments)
+             }, i[r].l = 1 * new Date(); a = s.createElement(o),
+             m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+         ga('create', 'UA-8720831-10', 'mcbjam.com');
+         ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

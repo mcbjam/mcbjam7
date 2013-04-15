@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //$('.smallipop').smallipop();
+  
 
     //-----  Load facebook for like buttoon and comment at least --->
     $(document).ready(function () {
@@ -26,8 +26,5 @@
         }(document, 'script', 'facebook-jssdk'));
     })
     //-----  End Load facebook ------------------------------->
-
-   
-
 })
 
