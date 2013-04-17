@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+  <title>FaceTook Your Friends</title>
+        <link href="Content/vendor/bootstrap.min.css" rel="stylesheet" />
+        <link href="Content/vendor/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="Content/simple.css" rel="stylesheet" />
+              
+</head>
+  <body>
+       <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>       
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <h3 class="muted">McbJam</h3>
+      </div>
+<!-- ------------------------------------------------------------------------ --->              
+  
+      <div class="jumbotron">
+         <h1>FaceTbook<br /> Your Friends </h1>
+          <span id="tipCSSAnimated"  data-smallipop='{"theme":"black","preferredPosition":"bottom"}' title="See your friend">
+               <input type="button" id="facetookme" class="btn btn-large btn-success" value="FaceTbook"/>
+          </span>
+     </div>
+
+
+      <!-- ----------content-->
+     <div class="jumbotron"  id="results"  >  
+          <div id="profile" hidden="hidden"></div>
+          <div id="girls" hidden="hidden"></div>      
+        <div id="friends" hidden="hidden"></div>
+         <div id="prenomstat" hidden="hidden"></div>
+        </div>
+   <hr/>                 
+
+    <div class="footer">
+      <p>&copy; McbJam 2013</p>     
+    </div>
+
+    </div> 
+      <!-- /container------------------------------------------------------------------ -->
+       
+      <!-- fork me on github-->
+     <a href="https://github.com/mcbjam/SimpleFacebook"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+      <!-- JS   -->
+       <script src="Scripts/vendor/jquery-1.9.1.min.js"></script>
+        <script src="Scripts/simplefacetook.js"></script>
+
+      <!-- /Google analytics -->
+      <script>
+          (function (i, s, o, g, r, a, m) {
+              i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                  (i[r].q = i[r].q || []).push(arguments)
+              }, i[r].l = 1 * new Date(); a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-8720831-10', 'mcbjam.com');
+          ga('send', 'pageview');
+    </script>     
+   </body>
+</html>

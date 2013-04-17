@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+    <head>
+  <title>Add an event to Your Facebook Friend Birthday</title>
+    <script src="../../js/vendor/jquery-1.9.1.min.js"></script>
+</head>
+  <body>
+    <div id='content'>
+      <h1>Events</h1>
+      <ul id='events'></ul>
+    </div>
+    <a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
+    <input type="button" value="Add Birthday event" onclick="facetookme();"/>
+    <div id="fb-root"></div>
+    <h2>User's profile information</h2>
+    <div id="profile"></div>
+     <h2>Ami</h2>
+    <div id="friends"></div>
+    <script>
+        var clientId = '605256317358.apps.googleusercontent.com';
+        var apiKey = 'AIzaSyCAKZ8JE1BavUMjiD872EmwTqZ4xAgRUtg';
+        var scopes = 'https://www.googleapis.com/auth/calendar';
+        var fbAppId = '445930615488341';
+        var accesstoken = '';
+
+        function handleClientLoad() {
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(checkAuth, 1);
+            checkAuth();
+        }
+
+        function checkAuth() {
+            gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true },
+                handleAuthResult);
+        }
+
+        function handleAuthResult(authResult) {
+            var authorizeButton = document.getElementById('authorize-button');
+            if (authResult) {
+                authorizeButton.style.visibility = 'hidden';
+                makeApiCall();
+            } else {
+                authorizeButton.style.visibility = '';
+                authorizeButton.onclick = handleAuthClick;
+            }
+        }
+
+        function handleAuthClick(event) {
+            gapi.auth.authorize(
+                { client_id: clientId, scope: scopes, immediate: false },
+                handleAuthResult);
+            return false;
+        }
+
+        function makeApiCall() {
+            gapi.client.load('calendar', 'v3', function () {
+                var request = gapi.client.calendar.events.list({
+                    'calendarId': 'primary'
+                });
+
+                request.execute(function (resp) {
+                    for (var i = 0; i < resp.items.length; i++) {
+                        var li = document.createElement('li');
+                        li.appendChild(document.createTextNode(resp.items[i].summary));
+                        document.getElementById('events').appendChild(li);
+                    }
+                });
+                /**
+                var resource = {
+                    "summary": "Appointment",
+                    "location": "Somewhere",
+                    "start": {
+                        "dateTime": "2011-12-16T10:00:00.000-07:00"
+                    },
+                    "end": {
+                        "dateTime": "2011-12-16T10:25:00.000-07:00"
+                    }
+                };
+                var request = gapi.client.calendar.events.insert({
+                    'calendarId': 'primary',
+                    'resource': resource
+                });
+                request.execute(function (resp) {
+                    console.log(resp);
+                });
+                */
+
+            });
+
+        }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
+<script type="text/javascript">
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: fbAppId,        // App ID
+            status: true,           // check login status
+            cookie: true,           // enable cookies to allow the server to access the session
+            xfbml: true            // parse page for xfbml or html5 social plugins like login button below
+        });
+    };
+    // Load the SDK Asynchronously
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+
+    function login() {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                dojob();
+            } else {
+                alert(response);
+            }
+        }, { scope: 'email, user_likes, user_birthday, friends_birthday' });
+    }
+
+
+    function dojob() {
+        accesstoken = FB.getAuthResponse()['accessToken'];
+        FB.api('/me', function (response) {
+            $('#profile').empty();
+            $('#profile').append(response.name);
+            //$('#profile').append(response.email);
+
+        });
+
+        FB.api('/me/friends?fields=birthday,name', function (response) {
+            $('#friend').empty();
+
+            var person = ''
+            for (var personIndex in response.data) {
+                person = response.data[personIndex];
+                $('#friends').append('<p>' +
+                    person.name + '</p>' +
+                    '<p>' +
+                    person.birthday + '</p>'
+                    +
+                    person.id + '</p>'
+                    );
+            }
+
+        });
+
+    }
+
+    function facetookme() {
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+                dojob();
+            } else if (response.status === 'not_authorized') {
+                // not_authorized
+                login();
+            } else {
+                // not_logged_in
+                login();
+            }
+        });
+    }
+
+</script>
+   </body>
+<html/>

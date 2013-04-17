@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>McbJam.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/mcbjam.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+  </head>
+  <body>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="index.html">McbJam.com</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+             <li ><a href="index.html">Home</a></li>
+               <li><a href="about.html">About</a></li>
+              <li><a href="contactme.html" class="active">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+  
+   
+    <div class="container">
+
+        
+    <script>
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        var posturl = 'https://www.googleapis.com/blogger/v3/blogs/' + getUrlVars()["blogid"] + '/posts/' + getUrlVars()["postid"] + '?key=AIzaSyCAKZ8JE1BavUMjiD872EmwTqZ4xAgRUtg';
+        $.ajax({
+            url: posturl,
+            type: 'GET',
+            dataType: 'jsonp',
+            success: function (data) {
+                $("#post").append(
+                         data.content
+                          );
+                $("#published").append(data.published);
+                $("#title").append(data.title);
+
+
+
+            }
+        });
+    </script> 
+
+      <div  >
+          
+        <div id="title" ></div>
+
+        <div id="published" ></div>
+            
+        <div id="post" ></div>
+      </div>
+
+        <div id="likebutton">
+
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+       
+
+            </div>
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">© <a href="http://mcbjam.com">mcbjam.com</a>  2013.</p>
+      </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
